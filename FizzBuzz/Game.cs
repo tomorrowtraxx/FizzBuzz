@@ -14,15 +14,16 @@ namespace FizzBuzz
             _number = 0;
         }
 
-        public IEnumerable<char> Next()
+        public string Next()
         {
             _number += 1;
 
-            if (_number == 3) return "Fizz";
+            var result = new List<string>();
 
-            if (_number == 5) return "Buzz";
+            if (_number % 3 == 0) result.Add("Fizz");
+            if (_number % 5 == 0) result.Add("Buzz");
 
-            return _number.ToString();
+            return result.Count > 0 ? string.Join(" ", result.ToArray()) : _number.ToString();
         }
     }
 }

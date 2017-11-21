@@ -17,47 +17,63 @@ namespace FizzBuzz.Tests
         }
 
         [Fact]
-        public void TestIsNumberOne()
+        public void Test1IsNumberOne()
         {
-            Assert.Equal("1", _game.Next());
+            Assert.Equal("1", TestPlayGame(1));
         }
 
         [Fact]
-        public void TestIsNumberTwo()
+        public void Test2IsNumberTwo()
         {
-            _game.Next();
-
-            Assert.Equal("2", _game.Next());
+            Assert.Equal("2", TestPlayGame(2));
         }
 
         [Fact]
-        public void TestIsFizz()
+        public void Test3IsFizz()
         {
-            _game.Next();
-            _game.Next();
-
-            Assert.Equal("Fizz", _game.Next());
+            Assert.Equal("Fizz", TestPlayGame(3));
         }
 
         [Fact]
-        public void TestIsNumberFour()
+        public void Test4IsNumberFour()
         {
-            _game.Next();
-            _game.Next();
-            _game.Next();
-
-            Assert.Equal("4", _game.Next());
+            Assert.Equal("4", TestPlayGame(4));
         }
 
         [Fact]
-        public void TestIsBuzz()
+        public void Test5IsBuzz()
         {
-            _game.Next();
-            _game.Next();
-            _game.Next();
-            _game.Next();
+            Assert.Equal("Buzz", TestPlayGame(5));
+        }
 
-            Assert.Equal("Buzz", _game.Next());
+        [Fact]
+        public void TestProductOf3IsFizz()
+        {
+            Assert.Equal("Fizz", TestPlayGame(6));
+        }
+
+        [Fact]
+        public void TestProductOf5IsBuzz()
+        {
+            Assert.Equal("Buzz", TestPlayGame(10));
+        }
+
+        [Fact]
+        public void Test15IsFizzBuzz()
+        {
+            Assert.Equal("Fizz Buzz", TestPlayGame(15));
+        }
+
+        private string TestPlayGame(int number)
+        {
+            string result = string.Empty;
+
+            for (int i = 0; i < number; i++)
+            {
+                result = _game.Next();
+            }
+
+            return result;
         }
     }
 }
